@@ -1,0 +1,32 @@
+body {
+	background-color: #444;
+	padding: 0px;
+	margin: 0px;
+	font-family: Georgia, serif;
+}
+
+#main {
+	width: 960px;
+	margin: 0px auto;
+	padding: 10px 0px;
+	background-color: #fff;
+}
+
+#sliderbar {
+	position: fixed;
+	top: 0px;
+	padding-top: 12px;
+	height: 100%;
+	width: 200px;
+	background-color: #ececec;
+}
+
+.artical {
+	margin-left: 200;
+	padding: 0 40px;
+}
+
+code, pre {
+	font-size: 12px;
+	line-height: 21px;
+}
