@@ -35,24 +35,5 @@ hiberante.cfg.xml文件=
 
 </hibernate-configuration>
 	
-### HibernateSchemaExport 代码定义	
-
-        try {
-		SAXReader reader = new SAXReader();
-		
-		 URL path = HibernateSchemaExport.class.getResource("hiberante.cfg.xml");
-		 
-		config = new Configuration().configure(path);
-		SchemaExport schemaExport = new SchemaExport(config);
-		schemaExport.create(true, true);
-		
-		SessionFactory sessionFactory = config.buildSessionFactory();
-		session = sessionFactory.openSession();
-		
-		tx = session.beginTransaction();
-		tx.commit();
-		
-	} catch (Exception ex) {
-		ex.printStackTrace();
-		tx.rollback();
-	}
+下面是换行  
+换行
