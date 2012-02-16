@@ -5,6 +5,7 @@
 
 hiberante.cfg.xml文件=	
 
+
 	<?xml version='1.0' encoding='UTF-8'?>
 	<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD//EN" "http://hibernate.sourceforge.net/hibernate-configuration-2.0.dtd">
 
