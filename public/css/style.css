@@ -2,7 +2,14 @@ body {
 	background-color: #444;
 	padding: 0px;
 	margin: 0px;
-	font-family: Georgia, serif;
+	font-size: 13px;
+	line-height: 150%;
+	color: #444;
+	font-family: "Microsoft Yahei", "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", STHeiti !important;
+}
+
+h2 {
+	color: #181818;
 }
 
 #main {
@@ -17,13 +24,33 @@ body {
 	top: 0px;
 	padding-top: 12px;
 	height: 100%;
-	width: 200px;
-	background-color: #ececec;
+	width: 240px;
+	background-color: #efefef;
 }
 
+#sliderbar ul li {
+	list-style: none;
+	padding: 3px;
+}
+
+#sliderbar ul li a {
+	color: #444;
+	font-size: 14px;
+	display: block;
+	text-decoration: none;
+	
+	text-shadow: 1px 1px 1px #eee;
+}
+
+#sliderbar ul li a:hover {
+	color: #000;
+}
+
+
 .artical {
-	margin-left: 200;
+	margin-left: 240;
 	padding: 0 40px;
+	background-color: #fff;
 }
 
 code, pre {
