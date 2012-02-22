@@ -3,26 +3,23 @@
 
 ###1. URL接口描述	
 
-namespace: /clip/*	
+namespace: /clips/*	
 
-####1.1 查看任务素材:  => /clip/index.action  - GET
+####1.1 查看任务素材:  => /clips/index.action  - GET
 
 参数说明:	
 
 	{
-		params: {
-			taskId: '36位收录任务ID'
-		},
 		orderBy: '开始时间',
 		return: {
 			list: [ClipTask], //返回List<ClipTask>数据
 			forward: {
-				success: '/clip/index.jsp'
+				success: '/clips/index.jsp'
 			}
 		}
 	}	
 	
-####1.2 查看任务素材:  => /clip/show.action?taskId=${0} - GET
+####1.2 查看任务素材:  => /clips/show.action?taskId=${0} - GET
 
 采用如下方式打开:
 	<!-- 使用使用一个浏览器标签页打开 -->
@@ -41,12 +38,12 @@ namespace: /clip/*
 		return: {
 			list: [Clip], //返回List<Clip>数据
 			forward: {
-				success: '/clip/show.jsp'
+				success: '/clips/show.jsp'
 			}
 		}
 	}	
 
-####1.3 获取素材播放路径: /clip/url.action?clipId=${0} - POST(Ajax)
+####1.3 获取素材播放路径: /clips/url.action?clipId=${0} - POST(Ajax)
 
 返回_mms://_开头的路径。  
 参数说明:	
@@ -61,6 +58,12 @@ namespace: /clip/*
 			info: ''//反馈信息，错误信息也显示在这里
 		}
 	}	
+
+测试数据约定:	
+
+	{
+		success:true, url: 'e:\\\\ff.wmv', 'get success.'
+	}
 	
 依赖列表:	
 
