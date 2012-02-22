@@ -9,7 +9,10 @@ get '/' do
 end	
 
 get '/doc/:md' do 
-	markdown File.read(File.dirname(__FILE__) + "/views/#{params[:md]}.md")
+  path = File.read(File.dirname(__FILE__) + "/views/#{params[:md]}.md")
+  pass if File.exist?(path)
+  
+	markdown path
 end
 
 

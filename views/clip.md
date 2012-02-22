@@ -3,21 +3,86 @@
 
 ###1. URL接口描述	
 
-* namespace: /clip/*
-* 素材列表: /clip/list.action => _List&lt;ClipTask&gt; list_
-* 查看单个素材: ／clip/show.action?taskId=${0}, 输出文件列表: _List&lt;ClipParts&gt; list_
+namespace: /clip/*	
+
+####1.1 查看任务素材:  => /clip/index.action  - GET
+
+参数说明:	
+
+	{
+		params: {
+			taskId: '36位收录任务ID'
+		},
+		orderBy: '开始时间',
+		return: {
+			list: [ClipTask], //返回List<ClipTask>数据
+			forward: {
+				success: '/clip/index.jsp'
+			}
+		}
+	}	
+	
+####1.2 查看任务素材:  => /clip/show.action?taskId=${0} - GET
+
+采用如下方式打开:
+	<!-- 使用使用一个浏览器标签页打开 -->
+	<a href="..." target="clipview">View</a>	
+
+参数说明:	
+
+	//任务素材由 ClipData || ClipPart 组成.  	
+	//ClipData: 完整素材文件  
+	//ClipPart: 分段任务的分段素材  
+	{
+		params: {
+			taskId: '36位收录任务ID'
+		},
+		orderBy: '',
+		return: {
+			list: [Clip], //返回List<Clip>数据
+			forward: {
+				success: '/clip/show.jsp'
+			}
+		}
+	}	
+
+####1.3 获取素材播放路径: /clip/url.action?clipId=${0} - POST(Ajax)
+
+返回_mms://_开头的路径。  
+参数说明:	
+	
+	{
+		params: {
+			clipId: '36位ClipId'
+		},
+		json: {
+			success: true|false,//标示获取url是否成功  
+			url: 'mms://...',//素材的url
+			info: ''//反馈信息，错误信息也显示在这里
+		}
+	}	
+	
+依赖列表:	
+
+* DyeResourceInfo - 2.0资源管理器WebService
+* DyeResouceInfo - XML 响应解析器
+* 3.0资源管理器
+* ResourceManagerFactory: 
+* mms.properties配置文件
+* mms - 客户端IP映射Adaptor
+* mms - 服务器磁盘映射Adaptor
 
 
-###2 数据结构
+###2. 数据结构
 
 ####2.1 实体描述
 
 * SQL2005数据库: DYULC30_hw@192.168.1.47:1433
-* 数据库表: ULCTaskInfo
-* 收录任务: cn.com.dayang.biandan3.domain.TaskInfo
-* 素材任务: cn.com.dayang.biandan3.domain.ClipTask
-* 数据库表: 
-* 素材文件: cn.com.dayang.biandan3.domain.ClipPart 
+* 收录任务: cn.com.dayang.biandan3.domain.TaskInfo [ULCTaskInfo]
+* 素材任务: cn.com.dayang.biandan3.domain.ClipTask [ULCTaskInfo]
+* 完整素材文件: cn.com.dayang.biandan3.domain.ClipData [ULCClipData]
+* 分段素材文件: cn.com.dayang.biandan3.domain.ClipPart [ULCClipPart]
+* 抽象素材: cn.com.dayang.biandan3.domain.Clip [ClipData + ClipPart]
 
 ####2.2 ClipTask与TaskInfo的关系	
 
@@ -81,9 +146,9 @@ EnumUtils任务状态的枚举描述
 	session.enableFilter("statusFilter");	
 
 
-###图片读取
+###3. 图片读取
 
-####数据库表结构
+####3.1 数据库表结构
 	
 	USE [dyulc30_hw]
 	GO

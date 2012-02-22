@@ -28,6 +28,10 @@ h2 {
 	background-color: #efefef;
 }
 
+li {
+	padding: 2px 0px;
+}
+
 #sliderbar ul li {
 	list-style: none;
 	padding: 3px;
