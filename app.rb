@@ -5,7 +5,7 @@ require "json"
 set :markdown, :layout_engine => :erb, :layout => :layout
 
 get '/' do
-	markdown :flow
+	markdown :deploybiandan3 
 end	
 
 get '/doc/:md' do 
