@@ -54,6 +54,7 @@ namespace: /clips/*
 		},
 		json: {
 			success: true|false,//标示获取url是否成功  
+			clipId: '',//当前返回的素材ID
 			url: 'mms://...',//素材的url
 			info: ''//反馈信息，错误信息也显示在这里
 		}
