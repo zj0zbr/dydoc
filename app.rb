@@ -8,6 +8,10 @@ get '/' do
 	markdown :deploybiandan3 
 end	
 
+get '/about' do
+  markdown :about
+end
+
 get '/doc/:md' do 
   path = File.read(File.dirname(__FILE__) + "/views/#{params[:md]}.md")
   pass if File.exist?(path)
@@ -28,7 +32,7 @@ get '/doc.json' do
         title =  lines[0].sub(/##/, '')
         url = File.basename(entry, '.md')
         
-        list << {:title => title, :url => "/doc/#{url}" } 
+        list << {:filename => entry, :title => title, :url => "/doc/#{url}" } 
       end
   }
 

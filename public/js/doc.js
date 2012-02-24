@@ -3,7 +3,6 @@ $(document).ready(function() {
 	$('code, pre').addClass('prettyprint1');
 	prettyPrint();
 	
-	
 	$.getJSON('/doc.json', {}, function(data) {
 		var ul = $('#sliderbar > ul');
 		var arr = [];
@@ -18,5 +17,6 @@ $(document).ready(function() {
 		
 		ul.append(arr.join('\n'));
 	});
+
 
 })
