@@ -31,10 +31,13 @@ __${classpath}__/config/mssqlDriver.properties新增数据库配置:
 ####Sql语句:	
 	
 	use dycommondatabase30;
-	select guidClip, strname, strMainFilePath from ClipElement 
-		where strname like '%.wmv' and guidClip = '4D89B33B-02A7-E0CA-4459-4DFC584F1129';
+	select el.guidClip, el.strMainFilePath, el.GuidFileStorage, fs.strFileName  
+		from ClipElement as el, ClipaudioFileSerial as fs 
+		where el.guidClip = '4F4AEDA2-424A-25BC-4459-735F33AFB8C5' 
+			and fs.guidFileStorage = el.GuidFileStorage 
+			and strFileName like '%.wmv';
 
-####domain:	
+####domain:
 
 	package cn.com.dayang.resource.domain;
 
@@ -44,13 +47,16 @@ __${classpath}__/config/mssqlDriver.properties新增数据库配置:
 		private String name = null;
 		private String folderPath = null;
 		// ... ...
-	}
+	}	
+
+<div class="info">
+这部分需要使用SQLQuery来进行查询,参考文档: <br />
+<a href="http://witcheryne.iteye.com/blog/1143326" target="_blank">
+	http://witcheryne.iteye.com/blog/1143326
+</a>	
+</div>
 
 ####Action中引用接口:	
-
-<div class="notice">
-<strong>注意</strong>: autowired, DyResourceClient的Spring Bean的id应该为__resourceClient__
-</div>
 
 	package cn.com.dayang.biandan3.web.json;
 	import cn.com.dayang.biandan3.service.DyResourceClient;
@@ -64,5 +70,7 @@ __${classpath}__/config/mssqlDriver.properties新增数据库配置:
 		// ... ...
 	}	
 
-
+<div class="notice">
+<strong>注意</strong>: autowired, DyResourceClient的Spring Bean的id应该为resourceClient
+</div>
 
