@@ -1,0 +1,16 @@
+<div id="editor">
+</div>
+
+<script src="/js/jquery-1.4.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/js/editor/ace.js" type="text/javascript" charset="utf-8"></script>
+<script src="/js/editor/theme-twilight.js" type="text/javascript" charset="utf-8"></script>
+<script src="/js/editor/mode-markdown.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript" charset="utf-8">
+$(document).ready(function() {
+	var editor = ace.edit("editor");
+	editor.setTheme("ace/theme/monokai");
+	var MarkdownMode = require("ace/mode/markdown").Mode;
+    editor.getSession().setMode(new MarkdownMode());
+});
+</script>

@@ -4,17 +4,23 @@ require "json"
 
 set :markdown, :layout_engine => :erb, :layout => :layout
 
+ignoreSet = ['./views/about.md']
+
 get '/' do
 	markdown :deploybiandan3 
 end	
 
 get '/about' do
-  markdown :about
+    markdown :about
+end
+
+get '/editor' do
+    erb :editor, :layout => :editor_layout
 end
 
 get '/doc/:md' do 
-  path = File.read(File.dirname(__FILE__) + "/views/#{params[:md]}.md")
-  pass if File.exist?(path)
+    path = File.read(File.dirname(__FILE__) + "/views/#{params[:md]}.md")
+    pass if File.exist?(path)
   
 	markdown path
 end
@@ -26,13 +32,17 @@ get '/doc.json' do
   list = Array.new
   
   Dir.glob("#{path}/*.md") { |entry| 
-      File.open("./#{entry}") do |f| 
-        lines = f.readlines
+      
+      if !ignoreSet.include?(entry) 
+      
+          File.open("./#{entry}") do |f| 
+            lines = f.readlines
         
-        title =  lines[0].sub(/##/, '')
-        url = File.basename(entry, '.md')
+            title =  lines[0].sub(/##/, '')
+            fileName = File.basename(entry, '.md')
         
-        list << {:filename => entry, :title => title, :url => "/doc/#{url}" } 
+            list << {:fileName => fileName, :title => title, :url => "/doc/#{fileName}" } 
+          end
       end
   }
 

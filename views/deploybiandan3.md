@@ -141,4 +141,4 @@
 </div>
 
 
-[tomcat]: "http://nodeblog.cloudfoundry.com/blogs/tomcat_environment" "Tomcat配置说明"
+[tomcat]: http://nodeblog.cloudfoundry.com/blogs/tomcat_environment "Tomcat配置说明"

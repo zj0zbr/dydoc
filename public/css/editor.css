@@ -1,0 +1,12 @@
+#main {
+	padding: 0px;
+}
+
+#editor-wrapper {
+	padding: 0px;
+}
+
+#editor {
+	position: relative;
+	height: 1000px;
+}
