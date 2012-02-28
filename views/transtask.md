@@ -143,7 +143,37 @@ namespace: /downloads/*
 		{name: 'destType', property: 'enumdesttype', type: 'int', value: 2},
 		{name: 'sponserId', property: 'strsponserid', value: loginUser.id},
 		{name: 'sponserName', property: 'strsponsername', value: loginUser.name}
-	}
+	}	
+
+####3.4 迁移去项(即，任务分类组件)	
+
+可以直接使用pretasks/field/_taskClass.jsp组件
+	
+	<%@ page language="java" pageEncoding="UTF-8"%>
+	<%@ taglib uri="/struts-tags" prefix="s"%>
+
+	<select name="taskClass" id="taskClass">
+		<option value="">
+			<s:text name="form.pretasks.category.none" />
+		</option>
+		<s:iterator id="classes" value="ulcLoader.taskClasses" status="stataus">
+			<s:if test="[1].guidtaskclass == null || [1].guidtaskclass.equals('')">
+				<option value='<s:property value="classguid + ',' + taskclassname"/>'>
+					<s:property value="taskclassname"/>
+				</option>
+			</s:if>
+			<s:elseif test="[1].guidtaskclass.equals(classguid)">
+				<option value='<s:property value="classguid + ',' + taskclassname"/>' selected>
+					<s:property value="taskclassname"/>
+				</option>
+			</s:elseif>
+			<s:else>
+				<option value='<s:property value="classguid + ',' + taskclassname"/>'>
+					<s:property value="taskclassname"/>
+				</option>
+			</s:else>
+		</s:iterator>
+	</select>	
 
 
 ###4. 工具类
