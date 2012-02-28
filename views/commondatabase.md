@@ -51,7 +51,7 @@ __${classpath}__/config/mssqlDriver.properties新增数据库配置:
 
 <div class="info">
 这部分需要使用SQLQuery来进行查询,参考文档: <br />
-<a href="http://witcheryne.iteye.com/blog/1143326" target="_blank">
+<a href="http://witcheryne.iteye.com/blog/1143326" target>
 	http://witcheryne.iteye.com/blog/1143326
 </a>	
 </div>
