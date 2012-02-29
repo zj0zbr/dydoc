@@ -47,7 +47,7 @@ namespace: /downloads/*
 		}
 	}	
 
-####1.3 查看IpDownloadTask: => /downloads/show.action?ipTaskId=${0} - GET	
+####1.3 查看IpDownloadTask: => /downloads/show.action?id=${0} - GET	
 	
 	{
 		params: {
