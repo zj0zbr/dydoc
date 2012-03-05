@@ -12,14 +12,19 @@
 ###Technology	
 
 * __markdown语法__: <http://qingbo.net/picky/502-markdown-syntax.html>
-* __Ruby 1.9.2__: 
+* __代码高亮PrettifyJS__: <http://google-code-prettify.googlecode.com/>
+* __Ruby 1.9.2__: <http://ruby-china.org/wiki>
 * __Sinatrarb__: <http://www.sinatrarb.com/intro-zh.html>
 * __Ruby Gems__:
 	* _discount_: 提供markdown语法解析功能
 	* _json:_ 提供json解析功能
 	* _thin_: Ruby的Web服务器，加快Sinatrarb运行速度	
+	* _chinese\_pinyin_: 提供汉字转拼音功能
 * __CodeMirror2__: 提供在线代码编辑功能,支持ipad
 	* <http://codemirror.net/>
+* __jQuery__: 1.7.1
+	* _quicksearch_: 提供ul/table过滤功能 <https://github.com/riklomas/quicksearch>
+	
 
 ###Tools	
 
@@ -41,17 +46,18 @@
 * 支持文章列表显示，需要手动修改views/layout.erb文件
 * 使用git对文章进行管理和存储
 
-####0.2.x(current)
+####0.2.x
 
 * 根据首行2号标题的内容生成, 自动生成文章列表。
 * 根据文件名,自动生成文章的url链接
 * 解决window下的运行问题(?)
 * 文章列表中自动高亮当前正在阅读的文章
 
-####0.3.x
+####0.3.x(current)
 
+* 支持按拼音过滤标题
 * 支持Tag功能
-* 支持Tag过滤, 拼音过滤
+* 支持Tag过滤
 * 在服务器保存文章列表(json)
 
 ####0.4.x	

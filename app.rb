@@ -1,3 +1,5 @@
+require 'rubygems'
+require 'chinese_pinyin'
 require "sinatra"
 require "rdiscount"
 require "json"
@@ -40,8 +42,9 @@ get '/doc.json' do
         
             title =  lines[0].sub(/##/, '')
             fileName = File.basename(entry, '.md')
+            pinyin = Pinyin.t(title, '')
         
-            list << {:fileName => fileName, :title => title, :url => "/doc/#{fileName}" } 
+            list << {:fileName => fileName, :pinyin => pinyin, :title => title, :url => "/doc/#{fileName}" } 
           end
       end
   }
