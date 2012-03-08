@@ -1,4 +1,4 @@
-##**JAVAMAIL	**
+##JAVAMAIL
 ---
 
 ###定义MailSenderInfo类
