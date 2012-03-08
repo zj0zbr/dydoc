@@ -136,24 +136,6 @@ EnumUtils任务状态的枚举描述
 		// ... ...
 	}
 
-####2.4 Clip Task hbm.xml 配置说明
-
-配置中添加了filter,需要在代码中开启。
-
-	<?xml version="1.0" encoding="utf-8"?>
-	<hibernate-mapping package="cn.com.dayang.biandan3.domain">
-		<class name="ClipTask" table="ULCTASKINFO">
-			<!-- ... ... -->
-			<filter name="statusFilter" condition="runstatus = 3"></filter>
-		</class>
-	</hibernate-mapping>	
-	
-如何开启Filter:	
-	
-	// ... ...
-	Session session = ...;
-	session.enableFilter("statusFilter");	
-
 
 ###3. 图片读取
 

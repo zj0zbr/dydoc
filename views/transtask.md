@@ -110,9 +110,46 @@ namespace: /downloads/*
 		//时间相关信息
 		private Date odtcreatetime;//迁移任务创建时间
 		private Date odtendtime;//设置于开始时间相同即可
+		
+		//迁移文件信息描述
+		private String strreadyfilepath;// xml
 
 		// ... ...
 	}
+
+####2.4 strReadyFilePath字段格式描述
+
+将素材的路径信息封装成如下xml,然后存入strReadFilePath字段:
+
+	<?xml version="1.0" encoding="UTF-8"?>
+	<ReadyFilePath>
+		<clipGuid></clipGuid>
+		<clipName></clipName>
+		<vaStream></vaStream>
+		<video></video>
+		<audioes></audioes>
+		<!-- 是否是hd, 0是, 废弃字段 -->
+		<isHD>0</isHD>
+	</ReadyFilePath>	
+
+video/avStream/audioes中存放的是资源管理器中的路径信息, 多个则以","号分隔:	
+	
+	String path = strFileFolderPath + "\\" + strFilename;
+	//e.g: Local\\M:\\folder\\ok.wmv	
+
+生成正确应该是如下格式:	
+
+	<?xml version="1.0" encoding="UTF-8"?>
+	<ReadyFilePath>
+		<clipGuid>32位ID</clipGuid>
+		<clipName>OK(03_05)</clipName>
+		<vaStream>Local\\M:\\folder\\ok.wmv,Local\\M:\\folder\\ok.ts</vaStream>
+		<video>Local\\M:\\folder\\ok.avi</video>
+		<audioes>Local\\M:\\folder\\ok.wav,Local\\M:\\folder\\ok.wav</audioes>
+		<!-- 是否是hd, 0是, 废弃字段 -->
+		<isHD>0</isHD>
+	</ReadyFilePath>	
+
 
 ###3. 数据输入
 

@@ -31,7 +31,7 @@ __${classpath}__/config/mssqlDriver.properties新增数据库配置:
 ####Sql语句:	
 	
 	use dycommondatabase30;
-	select el.guidClip, el.strMainFilePath, el.GuidFileStorage, fs.strFileName  
+	select el.guidClip, el.strMainFilePath, el.emunClass, el.GuidFileStorage, fs.strFileName  
 		from ClipElement as el, ClipaudioFileSerial as fs 
 		where el.guidClip = '4F4AEDA2-424A-25BC-4459-735F33AFB8C5' 
 			and fs.guidFileStorage = el.GuidFileStorage 
@@ -46,6 +46,7 @@ __${classpath}__/config/mssqlDriver.properties新增数据库配置:
 		private String clipId = null;
 		private String name = null;
 		private String folderPath = null;
+		private int classType = 0;//标识素材种类:0: video,2: audtio,3: av stream
 		// ... ...
 	}	
 
@@ -73,4 +74,50 @@ __${classpath}__/config/mssqlDriver.properties新增数据库配置:
 <div class="notice">
 <strong>注意</strong>: autowired, DyResourceClient的Spring Bean的id应该为resourceClient
 </div>
+
+###根据ClipIp获取所有素材信息	
+
+####接口描述:	
+
+	package cn.com.dayang.biandan3.service;
+	import cn.com.dayang.biandan3.service.to.ClipElement;
+
+	public interface DyResourceClient {
+
+		public ClipElement findAllElements(String clipId);
+		// ... ...
+	}
+
+####clipElement.classType字段描述  	
+
+* __0__: 标识Video, 在_strReadyFilePath_中存入video中
+* __2__: 标识audios, 在_strReadyFilePath_中存入audios中
+* __3__: 标识av复合, 在_strReadyFilePath_中存入avStream中
+
+
+###素材路径的处理
+
+实用_ResourceFilePath_来处理素材路径:
+
+	import cn.com.dayang.resource.to.ResourceFilePath
+
+	// ... ...
+	String filePath = "Local\\Z:\\公共域\\VIDEOAUDIO";
+	ResourceFilePath path = ResourceFilePath.createInstance(filePath);
+
+	//获取盘符
+	String driver = path.getDriverChar();
+	assertEquals("Z", driver);
+
+	//移除前缀
+	String realPath = path.getRealPath();
+	assertEquals("Z:\\公共域\\VIDEOAUDIO", realPath);
+
+	//获取相对路径
+	String relPath = path.getRelativePath();
+	assertEquals("\\公共域\\VIDEOAUDIO", relPath);	
+
+
+
+
 
