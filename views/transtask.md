@@ -136,6 +136,12 @@ video/avStream/audioes中存放的是资源管理器中的路径信息, 多个�
 	
 	String path = strFileFolderPath + "\\" + strFilename;
 	//e.g: Local\\M:\\folder\\ok.wmv	
+	
+	
+<div class="notice">
+	使用<b>IPTaskHelper.generateReadyFileXml(...)</b>方法生成，详情见[4.1-IPTaskHelper工具类描述]
+</div>
+
 
 生成正确应该是如下格式:	
 
@@ -149,6 +155,7 @@ video/avStream/audioes中存放的是资源管理器中的路径信息, 多个�
 		<!-- 是否是hd, 0是, 废弃字段 -->
 		<isHD>0</isHD>
 	</ReadyFilePath>	
+
 
 
 ###3. 数据输入
@@ -229,6 +236,15 @@ video/avStream/audioes中存放的是资源管理器中的路径信息, 多个�
 		 */
 		public static IpDownloadTask setTrimInOut(IpDownloadTask ipTask, 
 				int in, int out);
+		
+		/**
+		 * 返回的xml格式见本文的: 2.4 章节
+		 * @param clip
+		 * @param clipEls
+		 * @return
+		 */
+		public static String generateReadyFileXml(Clip clip, 
+				List<ClipElement> clipEls);
 		// ... ...
 	}	
 
