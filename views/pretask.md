@@ -40,4 +40,20 @@
 	</s:bean>
 	<%-- ... ... --%>
 	<s:property value="#commonUtils.frame2time(dwduration)"/>	
+	
+	
+###如何在biandan3中取2.0网管的用户树
 
+#### /users/json/tree.action - GET
+
+cn.com.dayang.biandan3.web.json.UserTreeJsonAction中实现该接口  
+
+输出的json格式:	
+
+	{	
+		version: '2',
+		//string 类型, 需要使用JSON.parse转换
+		data: [{...},{....}, ...] 
+	}	
+	
+data 格式
