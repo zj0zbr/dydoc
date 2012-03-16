@@ -2,35 +2,91 @@
 
 ###使用技术:
 
-Apache Shiro v1.2.0: <http://shiro.apache.org/>
+Apache Shiro v1.2.0: <http://shiro.apache.org/>	
+
+* EverNote笔记: <https://www.evernote.com/pub/lvjian/shiro>
+* References: <http://shiro.apache.org/reference.html>
+* Web Support: <http://shiro.apache.org/web.html#Web-ApacheShiroWebSupport>
+* API Doc: <http://shiro.apache.org/static/current/apidocs/>
 
 ###项目新增内容 	
 
-####新增jar包
-* __shiro-all-1.2.0.jar__: Shiro包
-* __slf4j-api-1.6.1.jar__: Shiro-core需要的日志包
-* jstl-api-1.2.jar
-* jstl-impl-1.2.jar
+<div class="notice">
+新增内容见
+	<a href="https://www.evernote.com/pub/lvjian/shiro">
+		EverNote笔记
+	</a>
+中的《biandan3项目中集成Shiro - SSH + Apache Shiro》	
+</div>
 
-###新增spring配置 	
+###Shiro中的登陆
 
-* ${classpath}/spring/shiro.xml: 提供shiro和spring集成的配置
+biandan3的登陆已经迁移到Shiro下,详情见:  
+cn.com.dayang.auth.webwork.action.AppAction;	
 
-###web.xml新增内容  
-
-	<filter>
-	    <filter-name>shiroFilter</filter-name>
-	    <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
-	    <init-param>
-	        <param-name>targetFilterLifecycle</param-name>
-	        <param-value>true</param-value>
-	    </init-param>
-	</filter>
+__核心代码:__
 	
-	<filter-mapping>
-	    <filter-name>shiroFilter</filter-name>
-	    <url-pattern>/*</url-pattern>
-	</filter-mapping>
+	UsernamePasswordToken token = new UsernamePasswordToken(name, password);
+
+	try {
+		SecurityUtils.getSubject().login(token);
+			
+		Subject subject = SecurityUtils.getSubject();
+			
+		String userId = (String)subject.getPrincipal();
+		User user = userService.getById(userId);
+		Session session = subject.getSession(true);
+		session.setAttribute(LoginAction.USER_KEY, user);
+			
+	} catch (AuthenticationException e) {
+		this.addActionError("invalid username or password. Please try again.");
+	}
+	
+__页面中如何获取User:__	
+
+1.ServletContext:
+
+	${currentUser}
+
+2.非Servlet上下文:
+
+	User user = (User)SecurityUtils.getSubject()
+		.getSession().getAttribue(LoginAction.USER_KEY);
+
+###基于urls过滤的权限配置
+
+${classpath}/spring/shiro.xml中配置urls相关信息:  
+_bean#shiroFilter > property[@filterChainDefinitions] > value_ 中配置urls
+
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<!-- ... ... -->
+	    <property name="filterChainDefinitions">
+	        <value>	      
+	        	# static file chains
+	        	/js/* = anon
+	            /css/* = anon
+	            /img/* = anon
+	            /images/* = anon
+	            /applets/* = anon
+	          	
+	          	# login/logout chain
+	          	/login.action = anon
+	          	
+	            # some example chain definitions:
+	            /admin/** = authc, roles[admin]
+	            /docs/** = authc, perms[document:read]
+	            
+	            /** = user
+	            # more URL-to-FilterChain definitions here
+	        </value>
+	    </property>
+	</bean>
+
+<div class="notice">
+	如何配置urls,参考: <a href="http://shiro.apache.org/web.html#Web-webini">Web Ini Configuration</a>
+</div>
+
 
 
 [shiro]: http://shiro.apache.org/ "Apache Shiro"
+[biandan3-shiro]: https://www.evernote.com/pub/lvjian/shiro "shiro in biandan3"
