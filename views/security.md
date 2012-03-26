@@ -86,6 +86,16 @@ _bean#shiroFilter > property[@filterChainDefinitions] > value_ 中配置urls
 	如何配置urls,参考: <a href="http://shiro.apache.org/web.html#Web-webini">Web Ini Configuration</a>
 </div>
 
+### User & ShiroUser说明		
+
+项目设计暂时放弃合并User的想法，User对应netmanage-rest中获取的用户信息，ShiroUser是BS网管内部的用户。
+
+* User只包含大洋网管的数据
+* ShiroUser包含BS网管角色和权限信息。 
+* ShiroUser通过dyId与User进行对应。
+* 登陆时，会将User和ShiroUser放到Session中	
+
+
 
 
 [shiro]: http://shiro.apache.org/ "Apache Shiro"

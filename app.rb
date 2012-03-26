@@ -9,7 +9,7 @@ set :markdown, :layout_engine => :erb, :layout => :layout
 ignoreSet = ['./views/about.md']
 
 get '/' do
-	markdown :deploybiandan3 
+	  markdown :deploybiandan3 
 end	
 
 get '/about' do
