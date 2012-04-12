@@ -28,6 +28,7 @@ get '/doc.json' do
   
   list = Array.new
   
+  #扫描views/*.md文件,构建文件列表
   Dir.glob("#{path}/*.md") { |entry| 
       
       if !ignoreSet.include?(entry) 
@@ -35,9 +36,9 @@ get '/doc.json' do
           File.open("./#{entry}") do |f| 
             lines = f.readlines
         
-            title =  lines[0].sub(/##/, '')
-            fileName = File.basename(entry, '.md')
-            pinyin = Pinyin.t(title, '')
+            title =  lines[0].sub(/##/, '')#第一行h2标签未文章的标题
+            fileName = File.basename(entry, '.md')#filename当做url
+            pinyin = Pinyin.t(title, '')#将标题生成拼音
         
             list << {:fileName => fileName, :pinyin => pinyin, :title => title, :url => "/doc/#{fileName}" } 
           end
