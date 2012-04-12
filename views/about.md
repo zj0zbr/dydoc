@@ -20,7 +20,7 @@
 	* _json:_ 提供json解析功能
 	* _thin_: Ruby的Web服务器，加快Sinatrarb运行速度	
 	* _chinese\_pinyin_: 提供汉字转拼音功能
-* __CodeMirror2__: 提供在线代码编辑功能,支持ipad
+* __CodeMirror2__: <del>提供在线代码编辑功能,支持ipad</del>
 	* <http://codemirror.net/>
 * __jQuery__: 1.7.1
 	* _quicksearch_: 提供ul/table过滤功能 <https://github.com/riklomas/quicksearch>
@@ -33,8 +33,8 @@
 * __Sublime Text 2__: 跨平台的CodeEditor(推荐)
 	* <http://www.sublimetext.com/2>
 * __TextMate__: Mac OS上的CodeEditor
-* __MarkdownPad__: Window平台下的可视化markdown编辑器(下载很慢噢!)
-	* <http://markdownpad.com/>
+* <del>__MarkdownPad__: Window平台下的可视化markdown编辑器(下载很慢噢!)</del>
+	* <del><http://markdownpad.com/></del>
 
 
 ###RoadMap
@@ -57,8 +57,8 @@
 
 * 支持按拼音过滤标题(support)
 * 记忆上一次访问的页面
-* 支持Tag功能
-* 支持Tag过滤
+* <del>支持Tag功能</del>
+* <del>支持Tag过滤</del>
 * <del>在服务器保存文章列表</del>
 
 ####0.4.x	

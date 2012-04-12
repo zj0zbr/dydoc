@@ -16,17 +16,12 @@ get '/about' do
     markdown :about
 end
 
-get '/editor' do
-    erb :editor, :layout => :editor_layout
-end
-
 get '/doc/:md' do 
     path = File.read(File.dirname(__FILE__) + "/views/#{params[:md]}.md")
     pass if File.exist?(path)
   
 	markdown path
 end
-
 
 get '/doc.json' do
   path = File.dirname(__FILE__) + "/views"
