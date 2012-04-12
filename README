@@ -1,4 +1,4 @@
-使用[Sinatrarb](http://www.sinatrarb.com/)搭建的[markdown](http://qingbo.net/picky/502-markdown-syntax.html)静态文档工具.
+使用Sinatrarb搭建的markdown静态文档工具.
 
 将markdown文件放到views目录下,程序会自动生成列表以及访问url.
 
@@ -9,7 +9,7 @@
 符合url格式即可.
 
 我们这在用的:
-<http://dayang.cloudfoundry.com/>
+http://dayang.cloudfoundry.com/
 
 License:
 Copyright (C) 2012 lvjian700 <lvjian700@gmail.com>
