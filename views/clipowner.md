@@ -17,13 +17,13 @@
 
 		orderBy: '开始时间',
 		return: {
-			UserTree: [Json], //返回List<ClipTask>数据
+			UserTree: [Json], //返回UserTree数据
 			
 		}
 	}	
 
 
-##2.数据结构 
+###2.数据结构 
 
 
 
@@ -84,3 +84,13 @@ public class UserTree {
 	// 存放jsonString
 	private String data = null;
 }
+
+
+###3.页面读取
+
+$.getJSON("rest/users/tree.json", function(data) { 
+
+	var treeData = JSON.parse(data.userTree.data);
+				
+	$.fn.zTree.init($("#treeDemo"), setting,treeData);
+});
