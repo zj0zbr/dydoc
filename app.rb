@@ -46,6 +46,6 @@ get '/doc.json' do
   }
 
   content_type :json
-  
+
   list.to_json
 end
