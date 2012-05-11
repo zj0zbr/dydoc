@@ -56,9 +56,15 @@
 		
 	}
 
-###2.已解决的问题
-2.1  页面可同时播放3个以上的OCX回显  
-2.2  XML发送已经调通，可发送全部开启和全部关闭的XML指令
+###2.已解决的问题  
+2.1POST form提交
+使用post提交时后台头部定义  
+        @Consumes("application/x-www-form-urlencoded")  
+前台ajax提交使用data方法提交参数
+
+
+2.2  页面可同时播放3个以上的OCX回显  
+2.3  XML发送已经调通，可发送全部开启和全部关闭的XML指令
 
   
 
