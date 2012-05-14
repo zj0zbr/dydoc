@@ -12,6 +12,9 @@
   2. 列队定义
   3. Xml消息体说明 
 4. messageBody 节点属性 
+5. Xml消息和指令格式
+	1. 消息
+	2. 指令	
 
   
 ###概述 
@@ -105,25 +108,80 @@ newsMessage Xml之需要修改messageBody中的内容，其他保持不变:
 
 ###MessageBody节点属性
 
-<table>
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-</table>
+GzzWeb项目只用到前6个字段， 其他保持为空
+
+    <messageBody>
+        <CommandID>start: 7 | stop: 11 | statusMsg: 38  | online: 3| offline:24</CommandID>  //命令值,与以前一样
+        <deviceName></deviceName>
+        <deviceIP><deviceIP>
+        
+        <portIndex>设备端口数|设备端口号<portIndex>
+  		<multicast>设备的主播地址</multicast>
+        <portStatus>端口状态</portStatus>
+
+        // 一下内容gzzweb项目用不到        
+        <guidDevice></guidDevice>
+        <guidPort></guidPort>    
+        <guidTask></guidTask>
+        <nType></nType>
+        <nReserve1></nReserve1>
+        <strMsg></strMsg>
+        <strExtern></strExtern>        
+    </messageBody>	
+
+<div class="notice">
+	portIndex比较特殊，具有两个含义:
+	<ul>
+		<li>1. 作为消息接收的时候，标识设备的端口数量</li>
+		<li>2. 作为指令发送的时候，标识需要控制的端口值</li>
+	</ul>
+</div>
 
 
+###Xml消息和指令	
+
+xmlmessage有两种使用方式:	
+
+####消息:	
 
 
+C/S采集客户端定时广播自身的信息。信息发送到DYULC.INGESTMANAGE.TOPIC主题	
 
+    <messageBody>
+        <CommandID>online: 3| offline:24</CommandID>
+        <deviceName></deviceName>
+        <deviceIP><deviceIP>
+        
+        <portIndex>设备端口数<portIndex>
+        <multicast>设备的主播地址</multicast>
+        <portStatus>端口状态</portStatus>
+		<!-- ... ... -->
+	</messageBody>
 
+####指令:	
 
+B/S控制段控制C/S采集工作站，开始/停止打视频流	
 
+__控制单个设备打视频流:__	
 
+    <messageBody>
+        <CommandID>start: 7 | stop: 11</CommandID>
+        <deviceName></deviceName>
+        <deviceIP><deviceIP>
+        <portIndex>设备端口数<portIndex>
+		<!-- ... ... -->
+	</messageBody>	
 
+__控制所有设备打视频流:__	
 
+    <messageBody>
+        <CommandID>start: 7 | stop: 11</CommandID>
+		<!-- ... ... -->
+	</messageBody>	
+
+<div class="notice">
+	此时是发送主题到DYULC.PHEDEVICE.TOPIC 
+</div>
 
 
 
