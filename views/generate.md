@@ -78,7 +78,17 @@
 		</taskContent> 
 	</ingestTasks>
 
- 
- 
- 
- 
+
+###2. 收录任务字段说明
+
+####任务状态:   
+
+    public static final int SLEEP_RUNSTATUS_TASK = 0;//休眠
+	public static final int WAITING_RUNSTATUS_TASK = 1;//等待执行  未分配 没
+	public static final int EXECUTING_RUNSTATUS_TASK = 2;//执行中 绿
+	public static final int FINISHED_RUNSTATUS_TASK = 3;//执行完成 蓝色
+	public static final int ERROR_RUNSTATUS_TASK = 4;//执行出错 橙
+	public static final int CANCELED_RUNSTATUS_TASK = 5;//取消执行 
+	public static final int DISTRIBUTED_RUNSTATUS_TASK = 6;//已被总控分配 已分配 灰色   
+    
+

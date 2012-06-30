@@ -28,6 +28,39 @@
 			<td>super 关键字</td>
 			<td>super 关键字</td>
 		</tr>
+		<tr>
+			<td>属性访问器</td>	
+			<td>
+
+				<ul>
+					<li><h4>ARC</h4></li>
+					<li>@property(strong/copy, [readwrite|readonly], [nonatomic])</li>
+					<li>@sythesized</li>
+					<li><h4>非ARC</h4></li>
+					<li>@property(retain/copy/weak, [readwrite|readonly], nonatomic)</li>
+					<li>@sythesized</li>
+				</ul>
+				也可以自己写getter/setter方法
+			</td>
+			<td>
+				getter/setter
+			</td>
+		</tr>
+		<tr>
+			<td>Java中的接口</td>
+			<td>Protocol</td>
+			<td>interface</td>
+		</tr>
+		<tr>
+			<td>委托(事件监听), 都是根据接口实现</td>
+			<td>Delegate</td>
+			<tr>EventListener<td>
+		</tr>
+		<tr>
+			<td>打开类(MetaData)</td>
+			<td>Categroy - 类别, ObjC中使用类别扩展已有类</td>
+			<td>不支持</td>
+		</tr>
 	</tbody>
 </table>	
 
