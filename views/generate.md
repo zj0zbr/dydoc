@@ -49,35 +49,47 @@
 
 ### 输入参数:	
 
-	<ingestTasks Method="AddTask" SignalType="1" TaskType="1" SubTaskType="1" TaskSource="zte">
-		<taskContent ContentID="66666688888888" >
-	    <programInfo>
-	          <programItem ProgramID="33" TaskID="" ProgramName="task01" 
-			  	StartDate="20110228123000" StopDate="20110228133000" PriorityType="1" 
-				Hint="" ProgramPath="\fdds\"/>     
-	    </programInfo>
-	    <mediaInfo>
-	    	<mediaItem ItemID="5555556666"  SignalURL="10.2.1.166" SignalPort="1234" 
-					SignalPID="0">					
-	     		<sourceInfo SignalID="128A3E22-4820-4882-AD00-582715B8829F" 
-					SignalName="10.2.1.45:1234">
-				</sourceInfo>				
-	    		<streamingMediaInfo VAFormatID="6C857DD3-D6AC-43b0-AC83-981C538E8A51" 
-					VAFormatName="mp4" FileFormatType="1" VideoCodec="mp4" 
-					SubVideoCodec="" AudioCodec="">
-				</streamingMediaInfo>
-				<mediaExtentInfo></mediaExtentInfo>
-					
-	        	<clipPathInfo OwnerID="" OwnerName="" 
-					BizDomainID="" BizDomainName="" ProjectID="" ProjectName="" ResPathID="" 
-					Owner20ID="" Owner20Name="" Res20PathID="">
-				</clipPathInfo>
-				<destDeviceInfo CapDeviceID="" CapDeviceName=""></destDeviceInfo>             
-	    	</mediaItem>         
-	   	</mediaInfo>	
-		</taskContent> 
-	</ingestTasks>
-
+	<ingestTask Method='addTask' SignalType='' TaskType='1'
+	TaskSource='biandan'>
+	<taskContent ContentID=''>
+		<programInfo>
+			<programItem ProgramID=''
+				TaskID='cbe1c7bc-7e8c-47eb-ac19-06b519ac3a67' ProgramName='123123123_07_03'
+				StartDate='20120712163500' StopDate='20120712170500' PriorityType='1'
+                    Hint='' ProgramPath='' />
+            </programInfo>
+            <mediaInfo>
+                <mediaItem ItemID='' SignalURL='' SignalPort='' SignalPID=''>
+                    <sourceInfo SignalID='4E81815C-0312-E730-4459-51F8206E65FC'
+                        SignalName='SDI信号1' />
+                    <streamingMediaInfo VAFormatID='09DF9AF7-4236-4EDF-4459-15C7FDD80DD7'
+                        VAFormatName='0915ts' FileFormatType='' VideoCodec=''
+                        SubVideoCodec='' AudioCodec='' />
+                    <mediaExtentInfo />
+                    <clipPathInfo OwnerID='83cc1c38-c9d5-4109-93a4-3af621dbb9a4'
+                        OwnerName='lxl' BizDomainID='3109E58C-AED0-4770-A2DE-B069D6BAF78F'
+                        BizDomainName='test' ProjectID='A144F40A-4289-427C-ACAE-FA250E59D0D2'
+                        ProjectName='公共域' ResPathID='' ResPathName='123123'
+                        Ower20ID='83cc1c38-c9d5-4109-93a4-3af621dbb9a4' Owner20Name='lxl'
+                        Res20PathID='' />
+                    <destDeviceInfo CapDeviceID='                                    '
+                        CapDeviceName='' />
+                    <taskExtInfo IfCycleTask='1' CycleType='1'
+                        CycleStartDate='20120703163500' CycleStopDate='' IntervalTime='1'
+                        ActDayInWeek='42' ActDayInMonth='0' ActDayInYear='0'
+                        TaskClassID='4EA0DC37-6367-7EC3-4459-AED8CDB6E960'
+                        TaskClassName='aq2                                                                                                                             '
+                        IfCapSeg='0' CapSegTime='30' IfBcbb='0' FreshFreq='' IfImportant='0'
+                        IfTechAudit='0' IfConfirmed='1' InputMatrixPortName='' IfBackup='0'
+                        OrgTaskID='' SatParam='' IfNeedTans='0' TransDelayTime='0'
+                        BianMuInfo='' NeedPartInsertDB='0' IfSaveExplorer='0'
+                        NeedAutoImportPart='0' 
+                        Reseave1='' 
+                        Reseave2='' />
+                </mediaItem>
+            </mediaInfo>
+        </taskContent>
+    </ingestTask>   
 
 ###2. 收录任务字段说明
 
@@ -91,4 +103,33 @@
 	public static final int CANCELED_RUNSTATUS_TASK = 5;//取消执行 
 	public static final int DISTRIBUTED_RUNSTATUS_TASK = 6;//已被总控分配 已分配 灰色   
     
+###3. 更新说明  
+
+####2012-07-05
+---
+
+taskExtInfo 节点新增如下属性:   
+
+    NeedPartInsertDB ="0"  IfSaveExplorer ="0" NeedAutoImportPart ="0"  
+
+from 王毅飞:    
+
+1. Method：添加正式任务：“AddTask”，修改正式任务：“ModTask ”
+2. ContentID ：添加正式任务为空，修改正式任务：taskinfoguid 
+ 
+添加：  
+
+1.clipPathInfo 节点 
+
+    ResPathName: task.projectPathUrl    
+
+2.taskExtInfo 节点：
+
+    NeedPartInsertDB: task?.bneedpartinsertdb,  
+    IfSaveExplorer: task?.bifsaveexplorer,  
+    NeedAutoImportPart: task?.bneedautoimportpart   
+
+
+
+
 
