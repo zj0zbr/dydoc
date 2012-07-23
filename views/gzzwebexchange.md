@@ -63,7 +63,7 @@ DYULC.PHEDEVICE.+采集工作站名称+".FOO"
         <destType><destType/> //目标类型节点   （主题Topic）  （队列Queue）
         <messageBody> //具体消息内容
             //消息体内容
-            <CommandID> start: 7 | stop: 11 | statusMsg: 38  | online: 3| offline:24</CommandID>  //命令值,与以前一样
+            <CommandID> start: 7 | stop: 11 | statusMsg: 62  | online: 3| offline:24</CommandID>  //命令值,与以前一样
             <deviceName></deviceName>
             <deviceIP><deviceIP>
         
@@ -111,7 +111,7 @@ newsMessage Xml之需要修改messageBody中的内容，其他保持不变:
 GzzWeb项目只用到前6个字段， 其他保持为空
 
     <messageBody>
-        <CommandID>start: 7 | stop: 11 | statusMsg: 38  | online: 3| offline:24</CommandID>  //命令值,与以前一样
+        <CommandID>start: 7 | stop: 11 | statusMsg: 62  | online: 3| offline:24</CommandID>  //命令值,与以前一样
         <deviceName></deviceName>
         <deviceIP><deviceIP>
         
