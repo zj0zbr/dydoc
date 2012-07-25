@@ -63,7 +63,7 @@ DYULC.PHEDEVICE.+采集工作站名称+".FOO"
         <destType><destType/> //目标类型节点   （主题Topic）  （队列Queue）
         <messageBody> //具体消息内容
             //消息体内容
-            <CommandID> start: 7 | stop: 11 | statusMsg: 62  | online: 3| offline:24</CommandID>  //命令值,与以前一样
+            <CommandID> start: 7(开始采集) | stop: 11(停止采集) | statusMsg: 62(获取设备状态更新)  | online: 3(设备上线) | offline:24(设备下线) | 55(开始打流) | 58(停止打流) </CommandID>  //命令值,与以前一样
             <deviceName></deviceName>
             <deviceIP><deviceIP>
         
