@@ -11,5 +11,16 @@
 我们这在用的:
 http://dayang.cloudfoundry.com/
 
+如何使用这个项目?
+
+git clone git@github.com:lvjian700/dydoc.git yourdoc
+
+cd yourdoc
+rm -rf .git
+rm -rf views/*.md
+rm -rf public/images/*
+
+之后在views/下添加你自己的markdown文件即可.
+
 License:
 Copyright (C) 2012 lvjian700 <lvjian700@gmail.com>
