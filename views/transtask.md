@@ -154,6 +154,12 @@ video/avStream/audioes中存放的是资源管理器中的路径信息, 多个�
 		<audioes>Local\\M:\\folder\\ok.wav,Local\\M:\\folder\\ok.wav</audioes>
 		<!-- 是否是hd, 0是, 废弃字段 -->
 		<isHD>0</isHD>
+		<!-- backup 节点用来支持双读双写, 2013-01-11 -->
+		<backup>
+			<vaStream>Local\\M:\\folder\\ok.wmv,Local\\M:\\folder\\ok.ts</vaStream>
+			<video>Local\\M:\\folder\\ok.avi</video>
+			<audioes>Local\\M:\\folder\\ok.wav,Local\\M:\\folder\\ok.wav</audioes>
+		</backup>
 	</ReadyFilePath>	
 
 
