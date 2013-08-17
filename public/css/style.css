@@ -132,6 +132,11 @@ pre {
 	word-wrap: break-word;
 }
 
+.newh2, .newh3, .newh4, .newh5, .newh6 {
+	font-size: 13px;
+	line-height: 24px;
+}
+
 /*
 	alert notice from blueprint
 ==========================================*/
