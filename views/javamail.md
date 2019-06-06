@@ -152,3 +152,4 @@
 	     mailInfo.setContent("内容！！！！！");               //邮件内容
 	     SimpleMailSender sms = new SimpleMailSender();  
 	     sms.sendTextMail(mailInfo);//发送文体格式    
+	     sms.sendTextMail(mailInfo);//再来一个
